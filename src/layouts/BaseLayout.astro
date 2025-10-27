@@ -1,0 +1,54 @@
+---
+import Navbar from '../components/Navbar.tsx';
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  noIndex?: boolean;
+}
+
+const {
+  title = 'Zakawat Abbas - Software Engineer',
+  description = 'Personal portfolio of Zakawat Abbas, Software Engineer specializing in Full-Stack Development, Machine Learning, and Cloud Computing.',
+  image,
+  noIndex = false,
+} = Astro.props;
+---
+
+<html lang="en" class="bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-50 transition-colors scroll-smooth">
+  <head>
+    <!--BASIC SEO-->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!--SOCIAL CARDS-->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <link rel="icon" href="/favicon.ico" />
+    {image && <meta property="og:image" content={image} />}
+    {image && <meta name="twitter:card" content="summary_large_image" />}
+    {image && <meta name="twitter:image" content={image} />}
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!--Optional: prevent indexing on drafts-->
+    {noIndex && <meta name="robots" content="noindex" />}
+
+    <!--Pre-paint dark-mode guard-->
+    <script is:inline>
+      (() => {
+        const saved = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (saved === 'dark' || (!saved && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+  </head>
+  <body class="min-h-screen antialiased">
+    <Navbar client:load page={Astro.url.pathname} />
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { FiPhoneCall, FiMail, FiDownload, FiGithub } from 'react-icons/fi';
+import { SiLinkedin, SiGithub } from 'react-icons/si';
+import Footer from '../layouts/Footer.astro';
+import { Image } from 'astro:assets';
+import { news } from '../constant';
+import { Card, CardContent } from '../components/ui/card';
+import { Badge } from '../components/ui/badge';
+import { Separator } from '../components/ui/separator';
+import { FiLinkedin } from "react-icons/fi";
+---
+
+<BaseLayout>
+  <!--======================HERO======================-->
+  <section id="about" class="py-20 mx-auto max-w-7xl px-6">
+    <div class="grid gap-12 lg:grid-cols-3">
+      <!--Left column (2/3)-->
+      <article class="lg:col-span-2 space-y-8">
+        <div>
+          <h1 class="text-5xl font-bold leading-tight tracking-tight">
+            Zakawat Abbas
+          </h1>
+          <p class="mt-3 text-base text-gray-600 dark:text-gray-400">
+            Software Engineer @ CodeBit AI
+          </p>
+        </div>
+
+        <div class="space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p>
+            I hold a Bachelor's degree in Computer System Engineering from <strong>NED University of Engineering and Technology (NEDUET)</strong> in Karachi, Pakistan. With over 3 years of professional experience, I specialize in building scalable full-stack applications and deploying machine learning solutions to production environments.
+          </p>
+          <p>
+            My expertise spans <strong>Full-Stack Web Development, Cloud Computing (AWS), Machine Learning, and Artificial Intelligence</strong>. I'm proficient in modern JavaScript frameworks (React.js, Next.js, Vue.js), Python, and have extensive experience with serverless architectures, CI/CD pipelines, and scalable database solutions.
+          </p>
+        </div>
+
+        <Separator />
+
+        <!--Technical Expertise-->
+        <div class="space-y-3">
+          <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-50">Technical Expertise</h2>
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+            My technical skill set encompasses a wide range of modern technologies and best practices. I have strong proficiency in <strong>Frontend Development</strong> (React.js, Vue.js, Next.js, Angular.js), <strong>Backend Development</strong> (Node.js, Flask, FastAPI), <strong>Cloud & DevOps</strong> (AWS, Docker, CI/CD, GitHub Actions), and <strong>Data Science</strong> (Machine Learning, Deep Learning, Data Analysis). I'm experienced in building RESTful APIs, microservices architectures, and integrating ML models into production systems.
+          </p>
+        </div>
+
+        <Separator />
+
+        <!--Professional Focus-->
+        <div class="space-y-3">
+          <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-50">Professional Focus</h2>
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+            I'm passionate about creating intelligent, user-centric applications that solve real-world problems. My work focuses on <strong>Serverless Application Development</strong>, <strong>API Design & Optimization</strong>, <strong>ML Model Deployment</strong>, and <strong>Performance Engineering</strong>. I've successfully delivered projects for international clients across real estate, e-commerce, and data science domains, consistently improving system scalability, reliability, and cost efficiency.
+          </p>
+        </div>
+      </article>
+
+      <!--Right column (1/3)-->
+      <aside class="flex flex-col items-center lg:items-start gap-6">
+        <Card className="w-full max-w-sm overflow-hidden">
+          <Image
+            src="/profile.webp"
+            alt="Zakawat Abbas"
+            class="w-full h-80 object-cover"
+            width={384}
+            height={320}
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+          />
+          <CardContent className="pt-6 space-y-4">
+            <!--Contact info-->
+            <div class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+              <div class="flex items-center gap-3">
+                <FiPhoneCall className="text-blue-900 flex-shrink-0" />
+                <a href="tel:+923423235676" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+                  +92 (342) 323 5676
+                </a>
+              </div>
+              <div class="flex items-center gap-3">
+                <FiMail className="text-blue-900 flex-shrink-0" />
+                <a href="mailto:zakawatabbas123@gmail.com" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors break-all">
+                  zakawatabbas123@gmail.com
+                </a>
+              </div>
+              <div class="flex items-center gap-3">
+                <FiLinkedin className="text-blue-900 flex-shrink-0" />
+                <a href="https://www.linkedin.com/in/zakawat-abbas/" target="_blank" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+                  linkedin.com/in/zakawat-abbas
+                </a>
+              </div>
+              <div class="flex items-center gap-3">
+                <FiGithub className="text-blue-900 flex-shrink-0" />
+                <a href="https://github.com/Zakawat-Abbas" target="_blank" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+                  github.com/Zakawat-Abbas
+                </a>
+              </div>
+            </div>
+
+            <!--Resume Download-->
+            <a
+              href="/Zakawat_Abbas_Resume.pdf"
+              download
+              class="flex items-center justify-center gap-2 w-full rounded-lg bg-blue-900 px-6 py-3 text-sm font-medium text-white shadow-sm hover:bg-blue-800 transition-colors focus-visible:outline focus-visible:ring-2 focus-visible:ring-indigo-400"
+            >
+              <FiDownload className="h-4 w-4" />
+              Download Resume
+            </a>
+          </CardContent>
+        </Card>
+      </aside>
+    </div>
+  </section>
+
+  <!--======================NEWS======================-->
+  <section id="news" class="py-16 mx-auto max-w-7xl px-6 bg-white dark:bg-gray-950">
+    <div class="flex items-center justify-between mb-8">
+      <h2 class="text-3xl font-semibold text-gray-900 dark:text-gray-50">
+        <a href="/news" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+          Highlights
+        </a>
+      </h2>
+    </div>
+
+    <Card>
+      <CardContent className="p-0">
+        <ul class="divide-y divide-gray-200 dark:divide-gray-800">
+          {
+            news.map(({ date, text }) => (
+              <li class="flex flex-col sm:flex-row gap-4 sm:gap-8 p-6 hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-colors">
+                <span class="shrink-0 font-mono text-sm text-gray-500 dark:text-gray-400 min-w-[120px]">
+                  {date}
+                </span>
+                <span class="text-gray-900 dark:text-gray-100">{text}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </CardContent>
+    </Card>
+  </section>
+
+  <Footer />
+</BaseLayout>

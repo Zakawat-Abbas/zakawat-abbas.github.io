@@ -1,0 +1,106 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CustomPublication from '../components/CustomPublication';
+import { publications, type Pub } from '../constant';
+import Footer from '../layouts/Footer.astro';
+import { Card, CardContent } from '../components/ui/card';
+
+
+const groupBy = (array, fn) =>
+  array.reduce((acc, item) => {
+    const key = fn(item);
+    (acc[key] ||= []).push(item);
+    return acc;
+  }, {});
+
+const byYear = groupBy(publications, (p) => p.year);
+---
+
+<BaseLayout
+  title="Publications | Zakawat Abbas"
+  description="Published research papers by Zakawat Abbas"
+>
+  <section id="publications" class="py-20 mx-auto max-w-7xl px-6">
+    <div class="mb-12">
+      <h1 class="text-4xl font-bold text-gray-900 dark:text-gray-50">Publications</h1>
+      <p class="mt-3 text-gray-600 dark:text-gray-400">
+        Research contributions in assistive technology and communication systems
+      </p>
+    </div>
+
+    {
+      Object.keys(byYear)
+        .sort((a, b) => Number(b) - Number(a))
+        .map((year) => (
+          <div class="mb-12">
+            {/* Year Header */}
+            <div class="relative mb-8">
+              <div class="absolute inset-0 flex items-center">
+                <div class="w-full border-t border-gray-200 dark:border-gray-800" />
+              </div>
+              <div class="relative flex justify-start">
+                <span class="bg-gray-50 dark:bg-gray-950 pr-4 text-3xl font-light text-gray-400 dark:text-gray-600">
+                  {year}
+                </span>
+              </div>
+            </div>
+
+            {/* Publications for this year */}
+            <div class="space-y-6">
+              {byYear[year].map((p: Pub) => (
+                <Card className="overflow-hidden hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6">
+                    <div class="flex flex-col md:flex-row gap-6">
+                      {/* Thumbnail */}
+                      <div class="shrink-0">
+                        <div class="h-32 w-32 rounded-lg overflow-hidden bg-white border border-gray-200 dark:border-gray-800">
+                          <Image
+                            src={p.thumbnail}
+                            alt="publication thumbnail"
+                            class="h-full w-full object-contain p-2"
+                            width={128}
+                            height={128}
+                            loading="eager"
+                            fetchpriority="high"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Content */}
+                      <div class="flex-1 space-y-4">
+                        <div>
+                          <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-50">
+                            {p.title}
+                          </h2>
+                          <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                            {p.authors}
+                          </p>
+                          <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                            {p.venue}
+                          </p>
+                          <p class="mt-1 text-sm text-gray-500 dark:text-gray-500">
+                            {p.date}
+                          </p>
+                        </div>
+
+                        <CustomPublication
+                          client:load
+                          researchGateUrl={p.researchGateUrl}
+                          ieeeUrl={p.ieeeUrl}
+                          abstract={p.abstract}
+                          pdfUrl={p.pdfUrl}
+                        />
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        ))
+    }
+  </section>
+
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,90 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { projects, type Project } from '../constant';
+import Footer from '../layouts/Footer.astro';
+import { Card, CardContent } from '../components/ui/card';
+import { Badge } from '../components/ui/badge';
+import { Button } from '../components/ui/button';
+---
+
+<BaseLayout
+  title="Projects | Zakawat Abbas"
+  description="Selected full-stack, ML, and cloud computing projects by Zakawat Abbas"
+>
+  <section id="projects" class="py-20 mx-auto max-w-7xl px-6">
+    <div class="mb-12">
+      <h1 class="text-4xl font-bold text-gray-900 dark:text-gray-50">Projects</h1>
+      <p class="mt-3 text-gray-600 dark:text-gray-400">
+        A collection of full-stack applications, machine learning projects, and cloud solutions
+      </p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2">
+      {
+        projects.map((p: Project) => (
+          <Card className="overflow-hidden hover:shadow-lg transition-all group">
+            <CardContent className="p-0">
+              {/* Thumbnail */}
+              <div class="relative overflow-hidden bg-gray-100 dark:bg-gray-900">
+                <Image
+                  src={p.thumbnail}
+                  alt={`${p.title} thumbnail`}
+                  class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
+                  width={700}
+                  height={700}
+                  loading="eager"
+                  fetchpriority="high"
+                />
+              </div>
+
+              {/* Content */}
+              <div class="p-6 space-y-4">
+                <div class="flex items-start justify-between gap-3">
+                  <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-50">
+                    {p.title}
+                  </h2>
+                  {p.dates && (
+                    <Badge variant="secondary" className="text-xs whitespace-nowrap">
+                      {p.dates}
+                    </Badge>
+                  )}
+                </div>
+
+                {p.status && (
+                  <div set:html={p.status} class="text-sm text-indigo-600 dark:text-indigo-400" />
+                )}
+
+                <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                  {p.description}
+                </p>
+
+                {/* Technologies */}
+                <div class="flex flex-wrap gap-2">
+                  {p.technologies.map((tech) => (
+                    <Badge variant="outline" className="text-xs">
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
+
+                {/* Links */}
+                <div class="flex flex-wrap gap-2 pt-2">
+                  {p.links.map((l) => (
+                    <Button variant="default" size="sm" asChild>
+                      <a href={l.href} target="_blank">
+                        {l.label}
+                      </a>
+                    </Button>
+                  ))}
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        ))
+      }
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

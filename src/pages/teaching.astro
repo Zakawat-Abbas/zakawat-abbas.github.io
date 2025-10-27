@@ -1,0 +1,98 @@
+---
+// src/pages/teaching.astro
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+/* ------------------------------ DATA ------------------------------ */
+interface Teaching {
+  org: string;
+  role: string;
+  dates: string;
+  thumbnail: string;
+  description: string;
+  links: { label: string; href: string }[];
+}
+
+const items: Teaching[] = [
+  {
+    org: 'ICodeGuru',
+    role: 'Trainer & Moderator',
+    dates: 'Apr 2024 - Present',
+    thumbnail: 'https://owais142002.github.io/assets/img/icodeguru.png',
+    description:
+      'At ICodeGuru, we teach, train, mentor and guide students from under-privileged areas of Pakistan to enhance their professional skills. I teach coding to these students and help them solve LeetCode problems.',
+    links: [{ label: 'Langchain Workshop', href: 'https://www.facebook.com/iCodeguru/videos/827891879496385' }],
+  },
+  {
+    org: 'PAK ANGELS',
+    role: 'Trainer',
+    dates: 'Jun 2024 - Present',
+    thumbnail: 'https://owais142002.github.io/assets/img/pak_angels.jpg',
+    description:
+      'At Pak Angels, I moderated an online Generative AI course focused on LangChain, Retrieval-Augmented Generation (RAG), and LangGraph. I led interactive discussions, guided hands-on applications, and trained under-privileged students from the community.',
+    links: [{ label: 'RAG Workshop', href: 'https://www.youtube.com/watch?v=rq-DvpERDU4' }],
+  },
+];
+---
+
+<BaseLayout
+  title="Teaching | Hamza Ali Khan"
+  description="Workshops and teaching engagements led by Hamza Ali Khan."
+>
+  <section
+    id="teaching"
+    class="pt-20 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pb-24"
+  >
+    <h1 class="text-3xl font-bold">Teaching</h1>
+
+    <div class="mt-8 space-y-10">
+      {items.map((t) => (
+        <article
+          class="rounded-lg border border-gray-600/40
+                 bg-gray-800/20 dark:bg-gray-700/10
+                 p-6 shadow-sm transition hover:shadow-md"
+          
+        >
+          <div class="flex flex-col gap-6 md:flex-row">
+            <!-- logo -->
+            <Image
+              src={t.thumbnail}
+              alt={`${t.org} logo`}
+              class="h-28 w-36 shrink-0 rounded object-cover ring-1 ring-gray-500/30 dark:ring-gray-400/30"
+              loading="eager"
+              fetchpriority="high"
+              width="144"
+              height="112"
+            />
+
+            <!-- details -->
+            <div class="flex-1">
+              <header class="flex flex-col gap-1 md:flex-row md:justify-between">
+                <h2 class="text-lg font-semibold text-cyan-200">{t.org}</h2>
+                <span class="text-sm text-gray-400 whitespace-nowrap">{t.dates}</span>
+              </header>
+
+              <p class="mt-0.5 font-medium text-sm">{t.role}</p>
+              <p class="mt-1 text-sm text-gray-300">{t.description}</p>
+
+              <div class="mt-4 flex flex-wrap gap-2">
+                {t.links.map((l) => (
+                  <a
+                    href={l.href}
+                    target="_blank"
+                    class="rounded bg-indigo-600 px-4 py-3 text-xs font-medium
+                           text-white shadow hover:bg-indigo-700
+                           focus-visible:outline focus-visible:ring-2
+                           focus-visible:ring-indigo-400" 
+                  >
+                    {l.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

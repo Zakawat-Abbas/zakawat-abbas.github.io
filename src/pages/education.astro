@@ -1,0 +1,90 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../layouts/Footer.astro';
+import { schools } from '../constant';
+import { Card, CardContent } from '../components/ui/card';
+import { Badge } from '../components/ui/badge';
+import { IoIosArrowForward } from "react-icons/io";
+import { FiMapPin } from "react-icons/fi";
+---
+
+<BaseLayout
+  title="Education | Zakawat Abbas"
+  description="Academic background of Zakawat Abbas - Computer System Engineering graduate"
+>
+  <section id="education" class="py-20 mx-auto max-w-7xl px-6">
+    <div class="mb-12">
+      <h1 class="text-4xl font-bold text-gray-900 dark:text-gray-50">Education</h1>
+      <p class="mt-3 text-gray-600 dark:text-gray-400">Academic qualifications and achievements</p>
+    </div>
+
+    <div class="space-y-6">
+      {
+        schools.map((school) => (
+          <Card className="overflow-hidden hover:shadow-lg transition-shadow">
+            <CardContent className="p-6">
+              <div class="flex flex-col md:flex-row gap-6">
+                {/* University Logo */}
+                <div class="shrink-0">
+                  <div class="h-24 w-24 rounded-xl overflow-hidden bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 flex items-center justify-center p-3">
+                    <Image
+                      src={school.logo}
+                      alt={`${school.name} logo`}
+                      class="h-full w-full object-contain rounded-sm"
+                      loading="eager"
+                      decoding="async"
+                      fetchpriority="high"
+                      width={96}
+                      height={96}
+                    />
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div class="flex-1 space-y-4">
+                  <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-3">
+                    <div>
+                      <h2 class="text-xl font-semibold text-gray-900 dark:text-gray-50">
+                                              <a
+                          href={school.link}
+                          target="_blank"
+                          class="hover:text-blue-900 transition-colors"
+                        >
+                          {school.name}
+                        </a>
+                      </h2>
+
+                      <p class="mt-1 text-base font-medium text-gray-700 dark:text-gray-300">
+                        {school.degree}
+                      </p>
+                    </div>
+                    <Badge variant="secondary" className="text-xs whitespace-nowrap">
+                      {school.dates}
+                    </Badge>
+                  </div>
+
+                  <p class="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-2">
+                    <FiMapPin className="text-blue-900" />
+                        <span class="leading-relaxed">{school.location}</span>
+                  </p>
+
+                  <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                    {school.summary.map((s) => (
+                      <li class="flex items-center gap-2">
+                        <IoIosArrowForward  className="text-blue-900" />
+                        <span class="leading-relaxed">{s}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        ))
+      }
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
