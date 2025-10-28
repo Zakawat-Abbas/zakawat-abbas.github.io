@@ -96,8 +96,8 @@ const Navbar: React.FC<{ page: string }> = ({ page }) => {
             <li key={href}>
               <a
                 href={href}
-                className={`block w-full py-2 px-3 rounded-lg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800 ${page === href
-                  ? 'text-indigo-600 dark:text-indigo-400 bg-gray-50 dark:bg-gray-900'
+                className={`block w-full py-2 px-3 rounded-lg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800 ${page.replace(/\/$/, '').trim() === href.replace(/\/$/, '').trim()
+                  ? 'text-blue-900 bg-gray-50 dark:bg-gray-900'
                   : ''
                   }`}
                 onClick={() => setOpen(false)}
