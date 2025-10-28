@@ -63,9 +63,10 @@ const Navbar: React.FC<{ page: string }> = ({ page }) => {
                   : ''
                   }`}
               >
-                {label}
+                {label},{page.trim()},{href.trim()}
               </a>
             </li>
+            // console.log(page.trim(), href.trim())
           ))}
           {/* <li className="pl-2">
             <ThemeToggle />
