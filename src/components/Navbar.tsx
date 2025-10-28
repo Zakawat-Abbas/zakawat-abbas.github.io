@@ -58,7 +58,7 @@ const Navbar: React.FC<{ page: string }> = ({ page }) => {
             <li key={href}>
               <a
                 href={href}
-                className={`transition-colors hover:text-blue-900 ${page.trim() === href.trim()
+                className={`transition-colors hover:text-blue-900 ${page.replace(/\/$/, '').trim() === href.replace(/\/$/, '').trim()
                   ? 'text-blue-900 font-semibold'
                   : ''
                   }`}
