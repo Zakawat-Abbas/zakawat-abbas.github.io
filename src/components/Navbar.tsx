@@ -63,7 +63,7 @@ const Navbar: React.FC<{ page: string }> = ({ page }) => {
                   : ''
                   }`}
               >
-                {label},{page.trim()},{href.trim()}
+                {label}
               </a>
             </li>
             // console.log(page.trim(), href.trim())
