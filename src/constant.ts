@@ -402,7 +402,7 @@ export const certifications: Certification[] = [
     issuer: 'Open Weaver',
     date: '2022',
     thumbnail: '/Build AR Powered E-commerce Site.jpeg',
-    description: 'Completed intensive bootcamp focused on building augmented reality enabled e-commerce solutions using modern web technologies.',
+    description: 'Completed an intensive, hands-on professional bootcamp focused on building innovative, real-world augmented reality enabled e-commerce solutions using cutting-edge modern web development technologies.',
   },
   {
     title: 'Python Programming | Numpy & Pandas Bootcamp',
@@ -410,7 +410,7 @@ export const certifications: Certification[] = [
     issuer: 'Open Weaver',
     date: '2022',
     thumbnail: '/Python Programming  Numpy & Pandas.jpeg',
-    description: 'Mastered Python programming fundamentals and data manipulation using Numpy and Pandas libraries for data science applications.',
+    description: 'Mastered Python programming fundamentals and data manipulation using Numpy and Pandas libraries for data science applications. ',
   },
   {
     title: 'Data Science Internship Completion',

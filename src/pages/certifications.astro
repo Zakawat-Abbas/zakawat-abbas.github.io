@@ -44,13 +44,7 @@ import { Button } from '../components/ui/button';
               <div class="p-6 space-y-4">
                 <div class="flex items-start justify-between gap-3">
                   <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-50">
-                       <a
-                          href={cert.link}
-                          target="_blank"
-                          class="hover:text-blue-900 transition-colors"
-                        >
                           {cert.title}
-                        </a>
                   </h2>
                   <Badge variant="secondary" className="text-xs whitespace-nowrap">
                     {cert.date}
@@ -64,6 +58,14 @@ import { Button } from '../components/ui/button';
                 <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
                   {cert.description}
                 </p>
+                {/* Links */}
+                <div class="flex flex-wrap md:flex-row justify-between items-center gap-2 pt-2">
+                    <Button variant="default" size="sm" asChild>
+                      <a href={cert.link} target="_blank">
+                        View Certificate
+                      </a>
+                    </Button>
+                </div>
               </div>
             </CardContent>
           </Card>
