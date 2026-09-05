@@ -4,6 +4,7 @@ export const news = [
   { date: 'Jun 01, 2024', text: 'Joined Deca Properties as Software Engineer' },
   { date: 'May 01, 2024', text: 'Started working with Rehani Soko as Frontend Engineer (Freelance)' },
   { date: 'May 09, 2024', text: 'Presented research paper at IC3SE-2024, Amity University, Greater Noida, India' },
+  { date: 'Jan 01, 2024', text: 'Started leading ZakCodeX as Founder & CEO' },
   { date: 'Dec 01, 2023', text: 'Joined F5-STUDIO as Full Stack Developer' },
   { date: 'Oct 01, 2023', text: 'Graduated with a Bachelor\'s degree in Computer System Engineering from NED University of Engineering and Technology (NEDUET)' },
   { date: 'Aug 01, 2022', text: 'Joined Additech-Sim as Software Engineer (Part-time)' },
@@ -193,11 +194,27 @@ export const navLinks = [
 
 export const experiences = [
   {
+    company: 'ZakCodeX',
+    logo: '/zakcodex_logo.jpg',
+    position: 'Founder & CEO',
+    employmentType: 'Full Time',
+    periods: ['Jan 2024 - Present'],
+    location: 'Wolverhampton, United Kingdom',
+    responsibilities: [
+      'Lead a UK-based software development company, helping startups, SMEs, and enterprises build scalable digital solutions.',
+      'Partner with clients across the UK, USA, and UAE to align technology strategy with business goals.',
+      'Oversee custom software, web and mobile applications, AI agents, and automation to improve business efficiency.',
+      'Guide delivery of CRM, ERP, e-commerce, and API integrations with user-focused design and cloud infrastructure.',
+      'Drive product strategy from startup MVPs to enterprise modernization, prioritizing security, scalability, and measurable business value.',
+    ],
+    link: 'https://zakcodex.com/',
+  },
+  {
     company: 'CodeBit AI',
     logo: '/codebit_logo.jpeg',
     position: 'Software Engineer',
     employmentType: 'Full Time',
-    periods: ['May 2025 - Present'],
+    periods: ['May 2025 - Mar 2026'],
     location: 'United States (Remote)',
     responsibilities: [
       'Designed and developed serverless applications using AWS Lambda, Python, and Next.js, improving system scalability and performance.',
