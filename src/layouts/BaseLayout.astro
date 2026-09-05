@@ -10,8 +10,8 @@ export interface Props {
 }
 
 const {
-  title = 'Zakawat Abbas - Software Engineer',
-  description = 'Personal portfolio of Zakawat Abbas, Software Engineer specializing in Full-Stack Development, Machine Learning, and Cloud Computing.',
+  title = 'Zakawat Abbas, Founder & CEO At ZakCodeX | Portfolio',
+  description = 'Zakawat Abbas is the Founder & CEO of ZakCodeX and a software engineer building custom software, AI automation, web, mobile, and cloud solutions.',
   image,
   noIndex = false,
 } = Astro.props;
@@ -27,6 +27,8 @@ const {
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
     <link rel="icon" href="/favicon.ico" />
     {image && <meta property="og:image" content={image} />}
     {image && <meta name="twitter:card" content="summary_large_image" />}
